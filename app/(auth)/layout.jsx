@@ -1,4 +1,5 @@
 import { ClerkProvider } from "@clerk/nextjs";
+import Tobar from "../../components/Topbar";
 
 export const metadata = {
   title: "Next.js",
@@ -7,10 +8,16 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <ClerkProvider>
-      <html lang='en'>
-        <body>{children}</body>
-      </html>
-    </ClerkProvider>
+    <html lang='en'>
+      {/* <head>
+        <script async src='https://www.youtube.com/iframe_api'></script>
+      </head> */}
+      <ClerkProvider>
+        <body className='bg-slate-300'>
+          <Tobar />
+          {children}
+        </body>
+      </ClerkProvider>
+    </html>
   );
 }
