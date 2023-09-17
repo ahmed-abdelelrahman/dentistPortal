@@ -7,6 +7,45 @@
   padding: 0;
   box-sizing: border-box;
 }
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: "Cairo", sans-serif;
+}
+a {
+  text-decoration: none;
+}
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* Small */
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+/* Medium */
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+/* Large */
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+
 /* main-heading */
 .main-heading {
   text-align: center;
@@ -251,4 +290,65 @@
     width: 24% !important;
     border-radius: 50%;
   }
+}
+/* boxes in clinic dashboard */
+.dashboard-boxes1 .container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 40px;
+}
+.dashboard-boxes2 .container {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 950px) {
+  .dashboard-boxes2 .container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+/* table styles */
+.tableContainer {
+  max-height: 250px;
+  overflow-y: scroll;
+}
+.table {
+  width: 100%;
+  height: 250px;
+
+  border-collapse: collapse;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+.th,
+.td {
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.th {
+  text-align: left;
+}
+.thead .th {
+  background-color: #55608f;
+}
+
+.tbody .tr:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+.tbody .td {
+  position: relative;
+}
+.tbody .td:hover:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -9999px;
+  bottom: -9999px;
+  background-color: rgba(255, 255, 255, 0.2);
+  z-index: -1;
 }

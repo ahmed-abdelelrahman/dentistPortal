@@ -20,6 +20,7 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
+import { UserButton } from "@clerk/nextjs";
 
 // icons
 
@@ -307,7 +308,7 @@ export default function Sidebar({ children }) {
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <AppBar className='' position='fixed' open={open}>
-        <Toolbar>
+        <Toolbar className='flex items-center justify-between'>
           <IconButton
             color='inherit'
             aria-label='open drawer'
@@ -319,6 +320,9 @@ export default function Sidebar({ children }) {
             }}
           >
             <MenuIcon />
+          </IconButton>
+          <IconButton>
+            <UserButton afterSignOutUrl='/' />
           </IconButton>
         </Toolbar>
       </AppBar>
