@@ -1,0 +1,91 @@
+
+
+
+generator client {
+  provider = "prisma-client-js"
+  
+  
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User{
+  id Int @id @default(autoincrement()) 
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  email     String   @unique
+  hash      String   
+
+  firstName String?
+  lastName String?
+  
+  }
+
+model Drug {
+  id       Int      @id @default(autoincrement())
+  generics String
+  brands   String
+  dosages  String
+
+
+}
+
+model Procdure{
+  id          Int      @id @default(autoincrement())
+  name        String
+  amount      Int
+}
+model Insurance{
+  id          Int      @id @default(autoincrement())
+  name String
+  email String 
+  address String
+  contactNumber String
+}
+model Payment{
+  id          Int      @id @default(autoincrement())
+  paymentName String @unique
+}
+model patientSource{
+  id          Int      @id @default(autoincrement())
+  name String 
+}
+model Patient{
+   id          Int      @id @default(autoincrement())
+  firstName String
+  lastName String
+  birthDay DateTime
+  gender Gender
+  contactNumber Int
+  address String
+  notes String
+  hasAllergies Boolean 
+  job String
+  identificationNo Int
+  emergencyName String
+  emergencyNumber Int
+   appointments Appointment[]
+
+
+}
+enum Gender{
+  MALE
+  FEMALE
+  NON_BINARY
+}
+
+model Appointment{
+  id        Int       @id @default(autoincrement())
+  reason    String @default("reason")
+  patient   Patient   @relation(fields: [patientId], references: [id])
+  patientId Int @default(1) 
+  date String
+  startTime String
+  endTime String
+  notes String
+  dentistInChargeId Int @default(1)
+}
